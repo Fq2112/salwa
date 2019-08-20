@@ -1,0 +1,3 @@
+[16-Aug-2019 15:23:09 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '=' in /home/salwacoi/public_html/laravel/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 384
+[18-Aug-2019 14:46:00 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '=' in /home/salwacoi/public_html/laravel/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 384
+[18-Aug-2019 14:46:17 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '?' in /home/salwacoi/public_html/laravel/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 500
