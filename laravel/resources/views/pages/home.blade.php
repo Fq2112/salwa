@@ -2,6 +2,14 @@
 @section('title', 'Home | '.env('APP_TITLE'))
 @push('styles')
     <style>
+        .banner_part {
+            background-image: url({{asset('img/banner/home-f.png')}});
+        }
+
+        .banner_part:after {
+            opacity: 0.4;
+        }
+
         .section_tittle h2 {
             text-align: center;
             margin-bottom: .5em;
@@ -74,7 +82,6 @@
             $('html, body').animate({
                 scrollTop: $($(this).attr('href')).offset().top
             }, 500);
-            return false;
         });
     </script>
 @endpush

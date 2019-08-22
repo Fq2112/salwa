@@ -3,7 +3,11 @@
 @push('styles')
     <style>
         .breadcrumb_bg {
-            background-image: url("{{\Faker\Factory::create()->imageUrl(1920,400)}}");
+            background-image: url("{{asset('img/banner/about-f.png')}}");
+        }
+
+        .breadcrumb:after {
+            opacity: .4;
         }
 
         #details p{
@@ -49,3 +53,12 @@
     </section>
     <!--::epc part end::-->
 @endsection
+@push('scripts')
+    <script>
+        $('.btn_1').on('click', function () {
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500);
+        });
+    </script>
+@endpush

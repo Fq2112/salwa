@@ -40,6 +40,10 @@
     #chart-container {
         padding: 5em;
     }
+
+    .service_part .single_service_part ol, .service_part .single_service_part ul {
+        color: #777;
+    }
 }
 
 /*
@@ -83,6 +87,10 @@
 
     #chart-container {
         padding: 5em;
+    }
+
+    .service_part .single_service_part ol, .service_part .single_service_part ul {
+        color: #777;
     }
 }
 
@@ -128,6 +136,10 @@
     #chart-container {
         padding: 5em;
     }
+
+    .service_part .single_service_part ol, .service_part .single_service_part ul {
+        color: #777;
+    }
 }
 
 /*
@@ -171,6 +183,10 @@
 
     #chart-container {
         padding: 4em;
+    }
+
+    .service_part .single_service_part ol, .service_part .single_service_part ul {
+        color: #777;
     }
 }
 
@@ -216,6 +232,10 @@
     #chart-container {
         padding: 5em;
     }
+
+    .service_part .single_service_part ol, .service_part .single_service_part ul {
+        color: #777;
+    }
 }
 
 /*
@@ -260,6 +280,10 @@
     #chart-container {
         padding: 0;
     }
+
+    .service_part .single_service_part ol, .service_part .single_service_part ul {
+        color: #777;
+    }
 }
 
 /*
@@ -303,5 +327,9 @@
 
     #chart-container {
         padding: 0;
+    }
+
+    .service_part .single_service_part ol, .service_part .single_service_part ul {
+        color: #777;
     }
 }

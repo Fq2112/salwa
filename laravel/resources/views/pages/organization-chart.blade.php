@@ -4,7 +4,11 @@
     <link rel="stylesheet" href="{{asset('vendor/org-chart/css/jquery.orgchart.css')}}">
     <style>
         .breadcrumb_bg {
-            background-image: url("{{\Faker\Factory::create()->imageUrl(1920,400)}}");
+            background-image: url("{{asset('img/banner/about-f.png')}}");
+        }
+
+        .breadcrumb:after {
+            opacity: .4;
         }
 
         .section_tittle h2 {
@@ -85,7 +89,7 @@
             <div class="row justify-content-center">
                 <div class="col">
                     <div id="chart-container">
-                        <img class="img-fluid" src="{{asset('img/organization-chart.png')}}" alt="Organization Chart">
+                        <img class="img-fluid" src="{{asset('img/orgchart.png')}}" alt="Organization Chart">
                     </div>
                 </div>
             </div>
@@ -94,107 +98,11 @@
     <!--::epc part end::-->
 @endsection
 @push('scripts')
-    <script type="text/javascript"
-            src="https://cdn.rawgit.com/stefanpenner/es6-promise/master/dist/es6-promise.auto.min.js"></script>
-    <script type="text/javascript" src="{{asset('vendor/html2canvas.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('vendor/jspdf.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('vendor/org-chart/js/jquery.orgchart.min.js')}}"></script>
     <script>
-        $(function () {
-            var dataSource = {
-                'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                'title': '{{\Faker\Factory::create()->jobTitle}}',
-                'children': [
-                    {
-                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                        'title': '{{\Faker\Factory::create()->jobTitle}}'
-                    },
-                    {
-                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                        'title': '{{\Faker\Factory::create()->jobTitle}}',
-                        'children': [
-                            {
-                                'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                'title': '{{\Faker\Factory::create()->jobTitle}}',
-                            },
-                            {
-                                'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                'children': [
-                                    {
-                                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                        'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                    },
-                                    {
-                                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                        'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                        'children': [
-                                            {
-                                                'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                                'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                            },
-                                            {
-                                                'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                                'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                                'children': [
-                                                    {
-                                                        'name': 'Si Dan',
-                                                        'title': 'intern'
-                                                    },
-                                                    {
-                                                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                                        'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                        'title': '{{\Faker\Factory::create()->jobTitle}}',
-                    },
-                    {
-                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                        'title': '{{\Faker\Factory::create()->jobTitle}}',
-                        'children': [
-                            {
-                                'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                'title': '{{\Faker\Factory::create()->jobTitle}}',
-                            },
-                            {
-                                'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                'children': [
-                                    {
-                                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                        'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                    },
-                                    {
-                                        'name': '{{\Faker\Factory::create('id')->firstName.' '.\Faker\Factory::create('id')->firstName}}',
-                                        'title': '{{\Faker\Factory::create()->jobTitle}}',
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            $('#chart-container2').orgchart({
-                data: dataSource,
-                nodeContent: 'title',
-                verticalLevel: 3,
-                visibleLevel: 4,
-                pan: true,
-                zoom: true,
-                parentNodeSymbol: 'fa-user-tie',
-                exportButton: true,
-                exportFilename: 'Organization Chart of SALWA ENGINEERING'
-            });
+        $('.btn_1').on('click', function () {
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500);
         });
     </script>
 @endpush

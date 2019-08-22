@@ -3,7 +3,11 @@
 @push('styles')
     <style>
         .breadcrumb_bg {
-            background-image: url("{{asset($sector->banner)}}");
+            background-image: url("{{asset('img/banner/sector.png')}}");
+        }
+
+        .breadcrumb:after {
+            opacity: .3;
         }
 
         .section_bg {
@@ -61,3 +65,12 @@
     </section>
     <!-- business sector details start-->
 @endsection
+@push('scripts')
+    <script>
+        $('.btn_1').on('click', function () {
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500);
+        });
+    </script>
+@endpush

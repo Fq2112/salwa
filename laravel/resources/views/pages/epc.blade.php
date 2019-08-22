@@ -1,10 +1,15 @@
 @extends('layouts.mst')
 @section('title', 'EPC | '.env('APP_TITLE'))
 @push('styles')
+    <link href="{{asset('vendor/lightgallery/dist/css/lightgallery.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/myAccordion.css')}}" rel="stylesheet">
     <style>
         .breadcrumb_bg {
-            background-image: url("{{\Faker\Factory::create()->imageUrl(1920,400)}}");
+            background-image: url("{{asset('img/banner/epc-f.png')}}");
+        }
+
+        .breadcrumb:after {
+            opacity: .4;
         }
 
         .section_tittle h2 {
@@ -30,7 +35,7 @@
                         <div class="breadcrumb_iner_item">
                             <h2>EPC</h2>
                             <p><a href="{{route('home')}}">Home</a> <span>&ndash;</span>EPC</p>
-                            <a href="#details" class="btn_1 mt-3">learn more</a>
+                            <a id="btn_lightGallery" href="javascript:void(0)" class="btn_1 mt-3">learn more</a>
                         </div>
                     </div>
                 </div>
@@ -40,7 +45,7 @@
     <!-- banner part start-->
 
     <!--::epc part start::-->
-    <section id="details" class="our_industries padding_top">
+    <section class="our_industries padding_top">
         <div class="container">
             <div class="row justify-content-center" style="margin-bottom: -1em">
                 <div class="col-xl-3">
@@ -119,9 +124,33 @@
     <!--::epc part end::-->
 @endsection
 @push('scripts')
+    <script src="{{asset('vendor/lightgallery/dist/js/lightgallery-all.min.js')}}"></script>
+    <script src="{{asset('vendor/lightgallery/modules/lg-video.min.js')}}"></script>
+    <script src="{{asset('vendor/lightgallery/lib/picturefill.min.js')}}"></script>
+    <script src="{{asset('vendor/lightgallery/lib/jquery.mousewheel.min.js')}}"></script>
     <script>
         $(function () {
             $("a[data-target='#engineering']").click();
+        });
+
+        $('#btn_lightGallery').on('click', function () {
+            $(this).lightGallery({
+                dynamic: true,
+                dynamicEl: [
+                    {
+                        "src": 'https://youtu.be/VTCPg423Bw0',
+                        'thumb': 'https://youtu.be/VTCPg423Bw0',
+                        'subHtml': '<h4>{{ucwords(\Faker\Factory::create()->words(2,true))}}</h4><p>{{\Faker\Factory::create()->sentence}}</p>'
+                    }, {
+                        'src': '{{\Faker\Factory::create()->imageUrl}}',
+                        'thumb': '{{\Faker\Factory::create()->imageUrl}}',
+                        'subHtml': "<h4>{{ucwords(\Faker\Factory::create()->words(2,true))}}</h4><p>{{\Faker\Factory::create()->sentence}}</p>"
+                    }, {
+                        'src': '{{\Faker\Factory::create()->imageUrl}}',
+                        'thumb': '{{\Faker\Factory::create()->imageUrl}}',
+                        'subHtml': "<h4>{{ucwords(\Faker\Factory::create()->words(2,true))}}</h4><p>{{\Faker\Factory::create()->sentence}}</p>"
+                    }]
+            });
         });
 
         function openAccordion(epc, image) {

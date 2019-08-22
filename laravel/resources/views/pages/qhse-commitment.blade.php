@@ -3,7 +3,11 @@
 @push('styles')
     <style>
         .breadcrumb_bg {
-            background-image: url("{{\Faker\Factory::create()->imageUrl(1920,400)}}");
+            background-image: url("{{asset('img/banner/qhse.png')}}");
+        }
+
+        .breadcrumb:after {
+            opacity: .4;
         }
 
         #details p, #details ol {
@@ -32,8 +36,8 @@
             position: relative;
             font-size: 1.08em;
             line-height: 1.3em;
+            letter-spacing: 1px;
             font-weight: 900;
-            text-align: justify;
             font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
         }
 
@@ -57,8 +61,7 @@
                     <div class="breadcrumb_iner">
                         <div class="breadcrumb_iner_item">
                             <h2>QHSE Commitment</h2>
-                            <p><a href="{{route('home')}}">Home</a> <span>&ndash;</span>About <span>&ndash;</span>QHSE
-                                Commitment</p>
+                            <p><a href="{{route('home')}}">Home</a> <span>&ndash;</span>QHSE Commitment</p>
                             <a href="#details" class="btn_1 mt-3">learn more</a>
                         </div>
                     </div>
@@ -139,6 +142,12 @@
                 resolution: 15,
                 bloomPadding: true
             });
+        });
+
+        $('.btn_1').on('click', function () {
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500);
         });
     </script>
 @endpush

@@ -3,7 +3,11 @@
 @push('styles')
     <style>
         .breadcrumb_bg {
-            background-image: url("{{\Faker\Factory::create()->imageUrl(1920,400)}}");
+            background-image: url("{{asset('img/banner/project-f.png')}}");
+        }
+
+        .breadcrumb:after {
+            opacity: .4;
         }
 
         .section_tittle h2 {
@@ -16,12 +20,6 @@
             right: 0;
             margin-right: auto;
             margin-left: auto;
-        }
-
-        .president-exp {
-            position: absolute;
-            bottom: -60px;
-            right: 0;
         }
 
         .timeline {
@@ -198,8 +196,7 @@
                     <div class="breadcrumb_iner">
                         <div class="breadcrumb_iner_item">
                             <h2>Project Experiences</h2>
-                            <p><a href="{{route('home')}}">Home</a> <span>&ndash;</span>About <span>&ndash;</span>Project
-                                Experiences</p>
+                            <p><a href="{{route('home')}}">Home</a> <span>&ndash;</span>Project Experiences</p>
                             <a href="#details" class="btn_1 mt-3">learn more</a>
                         </div>
                     </div>
@@ -221,8 +218,6 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col">
-                    <img class="img-fluid president-exp" src="{{asset('img/president-exp-25.png')}}"
-                         alt="President/CEO">
                     <div class="timeline">
                         <ul>
                             <li>
@@ -452,5 +447,11 @@
             });
 
         }).call(this);
+
+        $('.btn_1').on('click', function () {
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500);
+        });
     </script>
 @endpush
