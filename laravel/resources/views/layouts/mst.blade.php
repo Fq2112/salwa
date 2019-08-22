@@ -232,6 +232,70 @@
 <!-- Google Map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIljHbKjgtTrpZhEiHum734tF1tolxI68&libraries=places"></script>
 <script>
+    $(function () {
+        window.mobilecheck() ? $("body").removeClass('use-nicescroll') : '';
+
+        $(".use-nicescroll").niceScroll({
+            cursorcolor: "rgba(207,0,15,1)",
+            cursorwidth: "8px",
+            background: "rgba(222, 222, 222, .75)",
+            cursorborder: 'none',
+            // cursorborderradius:0,
+            autohidemode: 'leave',
+            zindex: 99999999,
+        });
+    });
+
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if ($(this).scrollTop() > 100) {
+            $('.to-top').addClass('show-to-top');
+        } else {
+            $('.to-top').removeClass('show-to-top');
+        }
+    }
+
+    function scrollToTop(callback) {
+        if ($('html').scrollTop()) {
+            $('html').animate({scrollTop: 0}, callback);
+            return;
+        }
+        if ($('body').scrollTop()) {
+            $('body').animate({scrollTop: 0}, callback);
+            return;
+        }
+        callback();
+    }
+
+    var title = document.getElementsByTagName("title")[0].innerHTML;
+    (function titleScroller(text) {
+        document.title = text;
+        setTimeout(function () {
+            titleScroller(text.substr(1) + text.substr(0, 1));
+        }, 500);
+    }(title + " ~ "));
+
+    <!--Scroll Progress Bar-->
+    function progress() {
+        var windowScrollTop = $(window).scrollTop();
+        var docHeight = $(document).height();
+        var windowHeight = $(window).height();
+        var progress = (windowScrollTop / (docHeight - windowHeight)) * 100;
+        var $bgColor = progress > 99 ? '#ff0012' : '#cf000f';
+        var $textColor = progress > 99 ? '#fff' : '#333';
+
+        $('.progress .bar').width(progress + '%').css({backgroundColor: $bgColor});
+        // $('h1').text(Math.round(progress) + '%').css({color: $textColor});
+        $('.fill').height(progress + '%').css({backgroundColor: $bgColor});
+    }
+
+    progress();
+
+    $(document).on('scroll', progress);
+
     var google;
 
     function init() {
@@ -372,70 +436,6 @@
     }
 
     google.maps.event.addDomListener(window, 'load', init);
-
-    $(function () {
-        window.mobilecheck() ? $("body").removeClass('use-nicescroll') : '';
-
-        $(".use-nicescroll").niceScroll({
-            cursorcolor: "rgba(207,0,15,1)",
-            cursorwidth: "8px",
-            background: "rgba(222, 222, 222, .75)",
-            cursorborder: 'none',
-            // cursorborderradius:0,
-            autohidemode: 'leave',
-            zindex: 99999999,
-        });
-    });
-
-    window.onscroll = function () {
-        scrollFunction()
-    };
-
-    function scrollFunction() {
-        if ($(this).scrollTop() > 100) {
-            $('.to-top').addClass('show-to-top');
-        } else {
-            $('.to-top').removeClass('show-to-top');
-        }
-    }
-
-    function scrollToTop(callback) {
-        if ($('html').scrollTop()) {
-            $('html').animate({scrollTop: 0}, callback);
-            return;
-        }
-        if ($('body').scrollTop()) {
-            $('body').animate({scrollTop: 0}, callback);
-            return;
-        }
-        callback();
-    }
-
-    var title = document.getElementsByTagName("title")[0].innerHTML;
-    (function titleScroller(text) {
-        document.title = text;
-        setTimeout(function () {
-            titleScroller(text.substr(1) + text.substr(0, 1));
-        }, 500);
-    }(title + " ~ "));
-
-    <!--Scroll Progress Bar-->
-    function progress() {
-        var windowScrollTop = $(window).scrollTop();
-        var docHeight = $(document).height();
-        var windowHeight = $(window).height();
-        var progress = (windowScrollTop / (docHeight - windowHeight)) * 100;
-        var $bgColor = progress > 99 ? '#ff0012' : '#cf000f';
-        var $textColor = progress > 99 ? '#fff' : '#333';
-
-        $('.progress .bar').width(progress + '%').css({backgroundColor: $bgColor});
-        // $('h1').text(Math.round(progress) + '%').css({color: $textColor});
-        $('.fill').height(progress + '%').css({backgroundColor: $bgColor});
-    }
-
-    progress();
-
-    $(document).on('scroll', progress);
 
     @if(session('contact'))
     swal('Successfully sent a message!', '{{ session('contact') }}', 'success');

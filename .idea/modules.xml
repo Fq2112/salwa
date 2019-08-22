@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../Design/Salwa Group/Company Profile/assets/.idea/assets.iml" filepath="$PROJECT_DIR$/../../../Design/Salwa Group/Company Profile/assets/.idea/assets.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/salwa.iml" filepath="$PROJECT_DIR$/.idea/salwa.iml" />
     </modules>
   </component>
