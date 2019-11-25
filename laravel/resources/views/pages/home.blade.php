@@ -2,11 +2,11 @@
 @section('title', 'Home | '.env('APP_TITLE'))
 @push('styles')
     <style>
-        .banner_part {
+        .banner_part{
             background-image: url({{asset('img/banner/home-f.png')}});
         }
 
-        .banner_part:after {
+        .banner_part:after{
             opacity: 0.4;
         }
 

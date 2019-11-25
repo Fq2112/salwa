@@ -1,13 +1,12 @@
 @extends('layouts.mst')
 @section('title', 'About: Organization Chart | '.env('APP_TITLE'))
 @push('styles')
-    <link rel="stylesheet" href="{{asset('vendor/org-chart/css/jquery.orgchart.css')}}">
     <style>
         .breadcrumb_bg {
             background-image: url("{{asset('img/banner/about-f.png')}}");
         }
 
-        .breadcrumb:after {
+        .breadcrumb:after{
             opacity: .4;
         }
 
@@ -32,27 +31,6 @@
             text-align: center;
             background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.15) 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(rgba(200, 0, 0, 0.15) 10%, rgba(0, 0, 0, 0) 10%);
             background-size: 10px 10px;
-        }
-
-        .orgchart {
-            background: transparent;
-        }
-
-        .oc-export-btn {
-            right: 20px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: 1px solid #cf000f;
-            color: #fff;
-            background-color: #cf000f;
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
-        }
-
-        .oc-export-btn:hover, .oc-export-btn:focus, .oc-export-btn:active {
-            border: 1px solid #9b000e;
-            background-color: #9b000e;
         }
     </style>
 @endpush

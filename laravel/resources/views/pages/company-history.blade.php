@@ -6,7 +6,7 @@
             background-image: url("{{asset('img/banner/about-f.png')}}");
         }
 
-        .breadcrumb:after {
+        .breadcrumb:after{
             opacity: .4;
         }
 

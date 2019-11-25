@@ -20,7 +20,6 @@ class CreateBusinessSectorsTable extends Migration
             $table->text('description');
             $table->text('segments');
             $table->string('uri')->unique();
-            $table->text('banner');
             $table->text('image');
             $table->timestamps();
         });

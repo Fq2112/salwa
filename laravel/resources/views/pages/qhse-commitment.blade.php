@@ -6,7 +6,7 @@
             background-image: url("{{asset('img/banner/qhse.png')}}");
         }
 
-        .breadcrumb:after {
+        .breadcrumb:after{
             opacity: .4;
         }
 

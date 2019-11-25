@@ -6,7 +6,7 @@
             background-image: url("{{asset('img/banner/sector.png')}}");
         }
 
-        .breadcrumb:after {
+        .breadcrumb:after{
             opacity: .3;
         }
 
@@ -40,7 +40,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-6 col-lg-6">
                     <div class="about_img">
-                        <img class="img-fluid rounded" src="{{$sector->image}}" alt="{{$sector->name}} Image">
+                        <img class="img-fluid rounded" src="{{asset('img/sectors/'.$sector->image)}}" alt="{{$sector->name}} Image">
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-5">

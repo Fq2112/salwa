@@ -3,10 +3,10 @@
 @push('styles')
     <style>
         .breadcrumb_bg {
-            background-image: url("{{asset('img/banner/project-f.png')}}");
+            background-image: url("{{asset('img/banner/project-fix.png')}}");
         }
 
-        .breadcrumb:after {
+        .breadcrumb:after{
             opacity: .4;
         }
 
@@ -289,7 +289,7 @@
                             <li>
                                 <div class="content">
                                     <h3>PRINSTINE OIL, SDN. BHD</h3>
-                                    <p>EPC OIL STORAGE TANK MALAKA &ndash; malaysia</p>
+                                    <p>EPC OIL STORAGE TANK MELAKA &ndash; malaysia</p>
                                 </div>
                                 <div class="time">
                                     <h4>2010 &ndash; 2011</h4>

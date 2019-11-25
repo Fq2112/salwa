@@ -29,9 +29,112 @@
     <link rel="stylesheet" href="{{asset('vendor/sweetalert/sweetalert2.css')}}">
     <!-- Media queries -->
     <link rel="stylesheet" href="{{asset('css/media-query.css')}}">
+    <style>
+        ::selection {
+            background: #cf000f;
+            color: #fff;
+        }
+
+        ::-moz-selection {
+            background: #cf000f;
+            color: #fff;
+        }
+
+        .images-preloader {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 10000000;
+            background-color: #fff;
+        }
+
+        .images-preloader .preloader {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 50px;
+            width: 50px;
+            margin: -25px 0 0 -25px;
+            border-radius: 50%;
+        }
+
+        .images-preloader .preloader:before,
+        .images-preloader .preloader:after {
+            content: "";
+            border: 3px solid #cf000f;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+        }
+
+        .images-preloader .preloader:before {
+            transform: scale(1, 1);
+            opacity: 1;
+            -webkit-animation: outside .6s infinite linear;
+            animation: outside .6s infinite linear
+        }
+
+        .images-preloader .preloader:after {
+            transform: scale(0, 0);
+            opacity: 0;
+            -webkit-animation: inside .6s infinite linear;
+            animation: inside .6s infinite linear
+        }
+
+        @-webkit-keyframes inside {
+            from {
+                -webkit-transform: scale(.5, .5);
+                opacity: 0
+            }
+            to {
+                -webkit-transform: scale(1, 1);
+                opacity: 1
+            }
+        }
+
+        @keyframes inside {
+            from {
+                transform: scale(.5, .5);
+                opacity: 0
+            }
+            to {
+                transform: scale(1, 1);
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes outside {
+            from {
+                -webkit-transform: scale(1, 1);
+                opacity: 1
+            }
+            to {
+                -webkit-transform: scale(1.5, 1.5);
+                opacity: 0
+            }
+        }
+
+        @keyframes outside {
+            from {
+                -webkit-transform: scale(1, 1);
+                opacity: 1
+            }
+            to {
+                -webkit-transform: scale(1.5, 1.5);
+                opacity: 0
+            }
+        }
+    </style>
     @stack('styles')
 </head>
 <body class="use-nicescroll">
+<div class="images-preloader">
+    <div class="preloader"></div>
+</div>
+
 @if(\Illuminate\Support\Facades\Request::is('project-experiences*'))
     <style>
         .particle-error,
@@ -188,7 +291,7 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         &copy; {{now()->format('Y').' '.env('APP_COMPANY')}}. All rights reserved. Template by
                         <a href="https://colorlib.com" target="_blank">Colorlib</a> | Designed & Developed by
-                        <a href="https://rabbit-media.net" target="_blank">Rabbit Media</a>
+                        <a href="http://rabbit-media.net" target="_blank">Rabbit Media</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
@@ -233,6 +336,13 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIljHbKjgtTrpZhEiHum734tF1tolxI68&libraries=places"></script>
 <script>
     $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="popover"]').popover();
+    });
+
+    window.onload = function () {
+        $('.images-preloader').fadeOut();
+
         window.mobilecheck() ? $("body").removeClass('use-nicescroll') : '';
 
         $(".use-nicescroll").niceScroll({
@@ -244,7 +354,26 @@
             autohidemode: 'leave',
             zindex: 99999999,
         });
-    });
+
+        var options = {
+            whatsapp: "+6281291777999",
+            email: "{{env('MAIL_USERNAME')}}",
+            call_to_action: "Message us",
+            button_color: "#CF000F",
+            position: "left",
+            order: "email,whatsapp",
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () {
+            WhWidgetSendButton.init(host, proto, options);
+        };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    };
 
     window.onscroll = function () {
         scrollFunction()
